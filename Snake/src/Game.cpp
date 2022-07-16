@@ -93,8 +93,9 @@ void Game::Reset()
 	m_Snake = Snake(GRID_WIDTH / 2, GRID_HEIGHT / 2);
 	m_Apple = RandomApple();
 	m_Score = 0;
-	for (bool cellIsObstacle : m_ObstacleMap)
-		cellIsObstacle = NO_OBSTACLE;
+	for (int x=0; x<GRID_WIDTH; x++)
+		for(int y = 0; y < GRID_HEIGHT; y++)
+			m_ObstacleMap[x][y] = NO_OBSTACLE;
 	for (GridCell snakeSegment : m_Snake.GetSegments())
 		m_ObstacleMap[snakeSegment.x][snakeSegment.y] = OBSTACLE;
 }
